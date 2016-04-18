@@ -32,5 +32,5 @@ public enum TileView
 	/// The viewer knows that the site was attacked and
 	/// something was hit
 	/// </summary>
-	Hit
+	Hit,
 }
