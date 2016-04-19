@@ -3,7 +3,7 @@ using Microsoft.VisualBasic;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data;
+//using System.Data;
 using System.Diagnostics;
 using SwinGameSDK;
 /// <summary>
@@ -152,12 +152,12 @@ static class UtilityFunctions
 						fillColor = LARGE_HIT;
 					break;
 				case TileView.Sea:
-				case TileView.Ship:
-					if (small)
+				//case TileView.Ship:
+					if (small){
 						fillColor = SMALL_SEA;
-					else
-						draw = false;
-					break;
+				//	else
+						//draw = false;
+					//break;
 				}
 
 				if (draw) {
