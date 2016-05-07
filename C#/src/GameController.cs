@@ -1,4 +1,3 @@
-
 using Microsoft.VisualBasic;
 using System;
 using System.Collections;
@@ -298,6 +297,7 @@ public static class GameController
 		}
 
 		UtilityFunctions.UpdateAnimations();
+		SwinGame.RefreshScreen();
 	}
 
 	/// <summary>
