@@ -70,6 +70,7 @@ static class MenuController
 	private static readonly Color MENU_COLOR = SwinGame.RGBAColor(2, 167, 252, 255);
 
 	private static readonly Color HIGHLIGHT_COLOR = SwinGame.RGBAColor(1, 57, 86, 255);
+	private static readonly Color DIFFICULTY_COLOR = SwinGameSDK.Color.Red;
 	/// <summary>
 	/// Handles the processing of user input when the main menu is showing
 	/// </summary>
@@ -170,6 +171,23 @@ static class MenuController
 
 		DrawButtons(MAIN_MENU);
 		DrawButtons(SETUP_MENU, 1, 1);
+
+		int btnTop = MENU_TOP - (MENU_GAP + BUTTON_HEIGHT) * 1;
+		int i =0;
+		if (GameController.getDifficultySettings () == AIOption.Easy)
+		{
+			i = 0;
+		}
+		else if (GameController.getDifficultySettings () == AIOption.Medium)
+		{
+			i = 1;
+		}else if (GameController.getDifficultySettings () == AIOption.Hard)
+		{
+			i = 2;
+		}
+
+		int btnLeft = MENU_LEFT + BUTTON_SEP * (i + 1);
+		SwinGame.DrawRectangle (DIFFICULTY_COLOR, btnLeft, btnTop, BUTTON_WIDTH, BUTTON_HEIGHT);
 	}
 
 	/// <summary>
