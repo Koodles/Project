@@ -29,6 +29,12 @@ static class DiscoveryController
 		if (SwinGame.MouseClicked(MouseButton.LeftButton)) {
 			DoAttack();
 		}
+			
+		Point2D mouse = default(Point2D);
+		mouse = SwinGame.MousePosition();
+		if (SwinGame.MouseClicked(MouseButton.LeftButton) && (mouse.X < 250) && (mouse.Y < 80)) {
+			GameController.AddNewState(GameState.ViewingGameMenu);
+		}
 	}
 
 	/// <summary>
