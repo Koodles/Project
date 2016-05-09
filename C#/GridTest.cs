@@ -24,7 +24,7 @@ namespace MyGame
 			Player.PlayerGrid.MoveShip (2, 2, ShipName.Submarine, Direction.UpDown);
 
 			AttackResult result = Player.PlayerGrid.HitTile (2, 2);
-			Assert.AreEqual ("hit something!", result.Text, "should hit the shit because the subarmine is in the cordinates");
+			Assert.AreEqual ("hit something!", result.Text, "should hit the ship because the subarmine is in the cordinates");
 		}
 
 		[Test]

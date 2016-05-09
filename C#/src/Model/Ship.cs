@@ -29,8 +29,24 @@ public class Ship
 	/// <returns>The type of ship</returns>
 	public string Name {
 		get {
-			if (_shipName == ShipName.AircraftCarrier) {
+			if (_shipName == ShipName.AircraftCarrier)
+			{
 				return "Aircraft Carrier";
+			}
+			if (_shipName == ShipName.Battleship){
+				return "Battleship";
+			}
+			if (_shipName == ShipName.Destroyer)
+			{
+				return "Destroyer";
+			}
+			if (_shipName == ShipName.Submarine)
+			{
+				return "Submarine";
+			}
+			if (_shipName == ShipName.Tug)
+			{
+				return "Tug";
 			}
 
 			return _shipName.ToString();
