@@ -25,7 +25,7 @@ static class MenuController
 	private static readonly string[][] _menuStructure = {
 		new string[] {
 			"PLAY",
-			"SETUP",
+			"DIFFICULTY",
 			"SCORES",
 			"QUIT"
 		},
@@ -58,9 +58,9 @@ static class MenuController
 	private const int MAIN_MENU_TOP_SCORES_BUTTON = 2;
 
 	private const int MAIN_MENU_QUIT_BUTTON = 3;
-	private const int SETUP_MENU_EASY_BUTTON = 0;
-	private const int SETUP_MENU_MEDIUM_BUTTON = 1;
-	private const int SETUP_MENU_HARD_BUTTON = 2;
+	private const int SETUP_MENU_EASY_BUTTON = -1;
+	private const int SETUP_MENU_MEDIUM_BUTTON = 0;
+	private const int SETUP_MENU_HARD_BUTTON = 1;
 
 	private const int SETUP_MENU_EXIT_BUTTON = 3;
 	private const int GAME_MENU_RETURN_BUTTON = 0;
@@ -170,7 +170,7 @@ static class MenuController
 		//SwinGame.DrawText("Settings", Color.White, GameFont("ArialLarge"), 50, 50)
 
 		DrawButtons(MAIN_MENU);
-		DrawButtons(SETUP_MENU, 1, 1);
+		DrawButtons(SETUP_MENU, 1, 0);
 
 		int btnTop = MENU_TOP - (MENU_GAP + BUTTON_HEIGHT) * 1;
 		int i =0;
@@ -186,7 +186,7 @@ static class MenuController
 			i = 2;
 		}
 
-		int btnLeft = MENU_LEFT + BUTTON_SEP * (i + 1);
+		int btnLeft = MENU_LEFT + BUTTON_SEP * (i);
 		SwinGame.DrawRectangle (DIFFICULTY_COLOR, btnLeft, btnTop, BUTTON_WIDTH, BUTTON_HEIGHT);
 	}
 
