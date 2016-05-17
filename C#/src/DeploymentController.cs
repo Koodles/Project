@@ -37,6 +37,8 @@ static class DeploymentController
 	private static Direction _currentDirection = Direction.UpDown;
 
 	private static ShipName _selectedShip = ShipName.Tug;
+
+
 	/// <summary>
 	/// Handles user input for the Deployment phase of the game.
 	/// </summary>
@@ -89,7 +91,7 @@ static class DeploymentController
 			}
 			else if (UtilityFunctions.IsMouseInRectangle (5, 540, DIR_BUTTONS_WIDTH, TOP_BUTTONS_HEIGHT))
 			{
-				GameController.AddNewState (GameState.ViewingGameMenu);
+				GameController.AddNewState (GameState.ViewingMainMenu);
 			}
 		}
 	}
@@ -146,26 +148,31 @@ static class DeploymentController
 			//SwinGame.DrawText("U/D", Color.White, GameFont("Menu"), UP_DOWN_BUTTON_LEFT, TOP_BUTTONS_TOP)
 			//SwinGame.DrawText("L/R", Color.Gray, GameFont("Menu"), LEFT_RIGHT_BUTTON_LEFT, TOP_BUTTONS_TOP)
 		}
-
+	
 		//DrawShips
-		foreach (ShipName sn in Enum.GetValues(typeof(ShipName))) {
-			int i = 0;
-			i = ((int)sn) - 1;
-			if (i >= 0) {
-				if (sn == _selectedShip) {
-					SwinGame.DrawBitmap(GameResources.GameImage("SelectedShip"), SHIPS_LEFT, SHIPS_TOP + i * SHIPS_HEIGHT);
-					//    SwinGame.FillRectangle(Color.LightBlue, SHIPS_LEFT, SHIPS_TOP + i * SHIPS_HEIGHT, SHIPS_WIDTH, SHIPS_HEIGHT)
-					//Else
-					//    SwinGame.FillRectangle(Color.Gray, SHIPS_LEFT, SHIPS_TOP + i * SHIPS_HEIGHT, SHIPS_WIDTH, SHIPS_HEIGHT)
+
+				if (_selectedShip == ShipName.Tug)
+				{
+					SwinGame.DrawBitmap (GameResources.GameImage ("SelectedTug"), SHIPS_LEFT, SHIPS_TOP +  SHIPS_HEIGHT - SHIPS_HEIGHT);
+				}
+				else if (_selectedShip == ShipName.Submarine)
+				{
+					SwinGame.DrawBitmap (GameResources.GameImage ("SelectedSub"), SHIPS_LEFT, SHIPS_TOP +  SHIPS_HEIGHT);
+				}
+				else if (_selectedShip == ShipName.Destroyer)
+				{
+					SwinGame.DrawBitmap (GameResources.GameImage ("SelectedDestroyer"), SHIPS_LEFT, SHIPS_TOP +  SHIPS_HEIGHT + SHIPS_HEIGHT);
+				}
+				else if (_selectedShip == ShipName.Battleship)
+				{
+					SwinGame.DrawBitmap (GameResources.GameImage ("SelectedBattleship"), SHIPS_LEFT, SHIPS_TOP +  SHIPS_HEIGHT + SHIPS_HEIGHT * 2);
+				}
+				else if (_selectedShip == ShipName.AircraftCarrier)
+				{
+					SwinGame.DrawBitmap (GameResources.GameImage ("SelectedAircraftCarrier"), SHIPS_LEFT, SHIPS_TOP +  SHIPS_HEIGHT + SHIPS_HEIGHT * 3);
 				}
 
-				//SwinGame.DrawRectangle(Color.Black, SHIPS_LEFT, SHIPS_TOP + i * SHIPS_HEIGHT, SHIPS_WIDTH, SHIPS_HEIGHT)
-				//SwinGame.DrawText(sn.ToString(), Color.Black, GameFont("Courier"), SHIPS_LEFT + TEXT_OFFSET, SHIPS_TOP + i * SHIPS_HEIGHT)
-
-			}
-		}
-
-		if (GameController.HumanPlayer.ReadyToDeploy) {
+		 if (GameController.HumanPlayer.ReadyToDeploy) {
 			SwinGame.DrawBitmap(GameResources.GameImage("PlayButton"), PLAY_BUTTON_LEFT, TOP_BUTTONS_TOP);
 			//SwinGame.FillRectangle(Color.LightBlue, PLAY_BUTTON_LEFT, PLAY_BUTTON_TOP, PLAY_BUTTON_WIDTH, PLAY_BUTTON_HEIGHT)
 			//SwinGame.DrawText("PLAY", Color.Black, GameFont("Courier"), PLAY_BUTTON_LEFT + TEXT_OFFSET, PLAY_BUTTON_TOP)

@@ -33,7 +33,12 @@ public static class GameResources
 		NewImage("RandomButton", "deploy_randomize_button.png");
 		NewImage("BackButton", "Back_button.png");
 
-
+		//Ship name Highlight
+		NewImage("SelectedTug", "deploy_button_TUG.png");
+		NewImage("SelectedSub", "deploy_button_SUBMARINE.png");
+		NewImage("SelectedDestroyer", "deploy_button_DESTROYER.png");
+		NewImage("SelectedBattleship", "deploy_button_BATTLESHIP.png");
+		NewImage("SelectedAircraftCarrier", "deploy_button_AIRCRAFT.png");
 
 		//Ships
 		int i = 0;
