@@ -29,13 +29,18 @@ static class DiscoveryController
 		if (SwinGame.MouseClicked(MouseButton.LeftButton)) {
 			DoAttack();
 		}
-			
+		if (SwinGame.KeyDown (KeyCode.vk_c))
+		{
+			UtilityFunctions.DrawField (GameController.ComputerPlayer.PlayerGrid, GameController.ComputerPlayer, true);
+			SwinGame.RefreshScreen (60);
+		}
 		Point2D mouse = default(Point2D);
 		mouse = SwinGame.MousePosition();
-		if (SwinGame.MouseClicked(MouseButton.LeftButton) && (mouse.X < 250) && (mouse.Y < 80)) {
-			GameController.AddNewState(GameState.ViewingGameMenu);
+		if (SwinGame.MouseClicked (MouseButton.LeftButton) && (mouse.X < 250) && (mouse.Y < 570))
+		{
+			GameController.AddNewState (GameState.ViewingGameMenu);
 		}
-	}
+}
 
 	/// <summary>
 	/// Attack the location that the mouse if over.
@@ -91,13 +96,13 @@ static class DiscoveryController
 		const int SHOTS_TOP = 157;
 		const int HITS_TOP = 206;
 		const int SPLASH_TOP = 256;
-
+		SwinGame.DrawBitmap(GameResources.GameImage("BackButton"), 0, 540);
+	
 		if ((SwinGame.KeyDown(KeyCode.vk_LSHIFT) | SwinGame.KeyDown(KeyCode.vk_RSHIFT)) & SwinGame.KeyDown(KeyCode.vk_c)) {
 			UtilityFunctions.DrawField(GameController.HumanPlayer.EnemyGrid, GameController.ComputerPlayer, true);
 		} else {
 			UtilityFunctions.DrawField(GameController.HumanPlayer.EnemyGrid, GameController.ComputerPlayer, false);
 		}
-
 		UtilityFunctions.DrawSmallField(GameController.HumanPlayer.PlayerGrid, GameController.HumanPlayer);
 		UtilityFunctions.DrawMessage();
 
@@ -105,6 +110,6 @@ static class DiscoveryController
 		SwinGame.DrawText(GameController.HumanPlayer.Hits.ToString(), Color.White, GameResources.GameFont("Menu"), SCORES_LEFT, HITS_TOP);
 		SwinGame.DrawText(GameController.HumanPlayer.Missed.ToString(), Color.White, GameResources.GameFont("Menu"), SCORES_LEFT, SPLASH_TOP);
 		Highlight ();
-	}
 
+	}
 }
